@@ -1,0 +1,19 @@
+{
+    "name": "timlebrun/itunes-search",
+    "description": "A small package to interact with Itunes Search API",
+    "authors": [
+        {
+            "name": "Tim Lebrun",
+            "email": "me@timlebrun.fr"
+        }
+    ],
+	"license": "WTFPL",
+	"autoload": {
+		"psr-4": {
+			"Tim\\ItunesSearch\\": "src"
+		},
+    "require": {
+        "illuminate/support": "^5.7",
+        "guzzlehttp/guzzle": "^6.3"
+    }
+}
