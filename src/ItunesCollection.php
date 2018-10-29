@@ -1,6 +1,6 @@
 <?php
 
-namespace Airweb\ItunesSearch;
+namespace Tim\ItunesSearch;
 
 use Illuminate\Support\Collection;
 

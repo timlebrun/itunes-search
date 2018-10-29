@@ -1,6 +1,6 @@
 <?php
 
-namespace Airweb\ItunesSearch;
+namespace Tim\ItunesSearch;
 
 class ItunesCache
 {
