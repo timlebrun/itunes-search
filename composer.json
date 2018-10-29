@@ -6,7 +6,7 @@
         {
             "name": "Tim Lebrun",
             "email": "me@timlebrun.fr",
-			"homepage": "http://timlebrun.fr",
+			"homepage": "http://timlebrun.fr"
 		}
     ],
 	"autoload": {
