@@ -1,5 +1,6 @@
 {
     "name": "timlebrun/itunes-search",
+    "minimum-stability": "stable",
     "description": "A small package to interact with Itunes Search API",
 	"license": "WTFPL",
     "authors": [
