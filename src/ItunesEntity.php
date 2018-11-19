@@ -8,7 +8,6 @@ use JsonSerializable;
  * Class ItunesEntity
  *
  * TODO document more properties
- * TODO map to better names
  *
  * @package Airweb\ItunesSearch
  * @property-read string $trackViewUrl The Entity URL
@@ -21,6 +20,28 @@ class ItunesEntity implements JsonSerializable
 	 * @var object
 	 */
 	private $attributes;
+
+	/**
+	 * Keys mapping
+	 *
+	 * @var array
+	 */
+	protected $mapping = [
+		'id' => 'trackId',
+		'bundle' => 'bundleId',
+  		'url' => 'trackViewUrl',
+  		'image' => 'artworkUrl512',
+  		'title' => 'trackName',
+  		'name' => 'trackName',
+  		'author' => 'artistName',
+  		'author_link' => 'artistViewUrl',
+  		'categories' => 'genres',
+  		'screenshots' => 'screenshotUrls',
+  		'size' => 'fileSizeBytes',
+  		'supported_os' => 'supportedDevices',
+  		'content_rating' => 'trackContentRating',
+  		'whatsnew' => 'releaseNotes',
+	];
 
 	/**
 	 * ItunesEntity constructor.
@@ -38,7 +59,16 @@ class ItunesEntity implements JsonSerializable
 	 * @return null
 	 */
 	public function jsonSerialize() {
-		return $this->attributes;
+		$output = (array) $this->attributes;
+
+		// add mappings to json
+		foreach ($this->mapping as $new => $old) {
+			if (empty($output[$old])) continue;
+			$output[$new] = $output[$old];
+			unset($output[$old]);
+		}
+
+		return $output;
 	}
 
 	/**
@@ -58,6 +88,8 @@ class ItunesEntity implements JsonSerializable
 	 */
 	public function __get($name)
 	{
+		// Mapped keys first
+		if (isset($this->mapping[$name])) return $this->attributes->{$this->mapping[$name]};
 		if (!empty($this->attributes->$name)) return $this->attributes->$name;
 
 		return null;
