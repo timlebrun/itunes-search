@@ -68,6 +68,8 @@ class ItunesEntity implements JsonSerializable
 			unset($output[$old]);
 		}
 
+		foreach ($output as &$line) $line = htmlentities($line);
+
 		return $output;
 	}
 
@@ -77,7 +79,7 @@ class ItunesEntity implements JsonSerializable
 	 * @return false|mixed|string|void
 	 */
 	public function toJson() {
-		return json_encode($this->jsonSerialize(), JSON_HEX_QUOT);
+		return json_encode($this->jsonSerialize());
 	}
 
 	/**
