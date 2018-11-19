@@ -2,6 +2,8 @@
 
 namespace Tim\ItunesSearch;
 
+use JsonSerializable;
+
 /**
  * Class ItunesEntity
  *
@@ -11,7 +13,7 @@ namespace Tim\ItunesSearch;
  * @package Airweb\ItunesSearch
  * @property-read string $trackViewUrl The Entity URL
  */
-class ItunesEntity
+class ItunesEntity implements JsonSerializable
 {
 	/**
 	 * The data of the entity
@@ -28,6 +30,24 @@ class ItunesEntity
 	public function __construct($attributes)
 	{
 		$this->attributes = (object) $attributes;
+	}
+
+	/**
+	 * Returns data for serialization
+	 *
+	 * @return null
+	 */
+	public function jsonSerialize() {
+		return $this->attributes;
+	}
+
+	/**
+	 * Gets JSON from current object
+	 *
+	 * @return false|mixed|string|void
+	 */
+	public function toJson() {
+		return json_encode($this->jsonSerialize(), JSON_HEX_QUOT);
 	}
 
 	/**
