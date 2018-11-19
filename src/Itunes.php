@@ -30,7 +30,7 @@ class Itunes
 	 * Gets an item by bundle ID
 	 *
 	 * @param string $bundle
-	 * @return ItunesCollection
+	 * @return ItunesEntity
 	 */
 	public function bundle(string $bundle) {
 		$lookup = $this->lookup(['bundleId' => $bundle]);
